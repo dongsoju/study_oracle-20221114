@@ -30,9 +30,22 @@ WHERE department_id=80;
 
 전체 사원들 중 한해동안 받은 급여가 12000인 사원을 조회하시오
 --전체 사원을 조회 --*AESRERISK,만능문자/모든 문자열을 대체 모든컬럼 뜻
-SELECT  *
+SELECT   'hanul' company, employee_id,first _name||' '|| last_name, salart *12 AS "Annual aslary",departments
 FROM    employees
-WHERE   salary*12 =120000;
+WHERE   employee_id = 101;
+
+
+SELECT   employee_id, last_name, salary, department_id
+FROM  employees
+WHERE salary  <= 3000;
+
+
+SELECT   employee_id, last_name, salary, department_id
+FROM  employees
+WHERE  department_id>80;
+
+
+
 
 
 
