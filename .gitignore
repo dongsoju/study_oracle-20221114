@@ -1,0 +1,24 @@
+# 전송하지 않을 파일 목록들
+
+#1.문서파일 push할때 전송되지않음
+*.hwp
+*.xls
+*.xlms
+#2.이미지파일 push할때 전송되지않음
+*.png
+*.jpg
+*.gif
+#3.비디오/오디오파일 push할때 전송되지않음
+*.mp4
+*.avi
+*.mp3
+*.vmv
+*.mov
+*.zip
+#4.특정폴더 push할때 전송되지않음
+downloads/
+attachments/
+pdf/
+#제외할 폴더 목록 
+만약 제외할 폴더가 extrass라는 폴더라면아래#를 제거하세요
+#extras/
