@@ -21,4 +21,4 @@ attachments/
 pdf/
 #제외할 폴더 목록 
 만약 제외할 폴더가 extrass라는 폴더라면아래#를 제거하세요
-#extras/
+extras/
