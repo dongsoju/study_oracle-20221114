@@ -1,11 +1,13 @@
-# git_test
+# Study_Oracle
 
-## intro
-git test를 위한 repository 입니다
+한울직업전문학교 응용SW 개발자 5회차 과정의 오라클 XE 21c 수업 기록
 
-##flow
--git설치,github 연동
--sourceTree 연결
+## Table of List (=목차)
 
-
->이것은 연승용 git 저장소입니다
+- 2022.11.14 : 오라클 세팅 및 환경설정, SQL 소개
+- 2022.11.15 : SQL 문법 규칙
+- 2022.11.16 : SELECT ~ FROM
+- 2022.11.16~18 : SELECT ~ FROM ~ WHERE
+- 2022.11.21 : 기본함수(숫자함수,문자함수)
+- 2022.11.22 : 기본함수(문자함수 나머지, 변환함수)
+- 2022.11.23 : 기본함수(NULL 처리, 조건비교 함수와 표현식)
