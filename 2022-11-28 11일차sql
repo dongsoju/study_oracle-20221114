@@ -1,0 +1,80 @@
+--EQUI-JOIN vs NON-EQUL JOIN 
+--INNER JOIN : 오라클의 EQUL-JOIN과 같은 기능을 하는 JOIN형식
+--1) FROM절에 INNER JOIN을 명시
+--2)JOIN조건은 ON 절에 명시
+--OUTER JOIN (LEFT : RIGHT : FULL): OUTER (데이터중 NULL 이있는곳의 반대)
+--사원의 사번 이름 부서코드 부서명 정보를 조회한다
+
+
+SELECT e.employee_id first_name,e.department_id,
+       d.department_name
+FROM   employees e, departments d
+WHERE  e.department_id = d.department_id(+)
+AND    e.manager_id IS NOT NULL
+ORDER  BY 1;
+--=========================================
+--WHERE 절에 일반조건은 ON,USING 절 다음에 표현한다 
+--=========================================
+SELECT   e.employee_id first_name,e.department_id,
+         d.department_name
+FROM     employees e JOIN departments d
+ON       e.department_id = d.department_id(+)
+WHERE    e.manager_id IS NOT NULL
+ORDER BY 1;
+
+--====================================================
+--join에 사용하는 테이블이 3개이상일경우 첫번쨰 join결화에 두번쨰 JOIN을 추가하는 형태
+--====================================================
+--[문제5-15]사원의 사번 이름 부서코드 부서명 위치코드 도시정보를 조회한다
+
+
+SELECT      e.employee_id, e.first_name , e.department_id,
+            d.department_name,  l.location_id,
+            l.city
+FROM        employees e JOIN departments d 
+ON          e.department_id = d.department_id
+JOIN        locations l
+ON          d.location_id = l.location_id
+ORDER BY 1;
+
+
+
+--OUTER JOIN (LEFT |RIGHT |FULL★) : OUTER(데이터중 NULL 이 있는곳의 반대)
+--오라클 조인 > OUTER JOIN 은 (+)사용
+--ANSI 조인 > OUTER
+
+
+
+
+
+
+
+
+
+[5-16]사원의 사번, 이름. 부서코드, 부서명 정보를 조회한다
+
+
+SELECT  e.employee_id, e.first_name, e.department_id,
+        d.department_name
+FROM    employees e, departments d
+WHERE   e.department_id = d.department_id(+)
+AND     e.manager_id IS NOT NULL
+ORDER BY 1;
+
+
+
+
+
+
+-- ansi join >outer join
+SELECT  e.employee_id, e.first_name,department_id,
+        d.department_name
+FROM    employees e FULL OUTER JOIN departments d
+USING   (department_id)
+WHERE    e.manager_id IS NOT NULL
+ORDER BY 1;
+
+
+
+
+

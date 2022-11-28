@@ -1,0 +1,81 @@
+[연습문제 5-2]
+
+
+
+
+
+
+
+
+
+1.사번이 110,130,150 에 해당하는 사원의 사번 이름 부서명을 조회하시오
+
+
+SELECT      e.employee_id, e.first_name,
+            d.department_name
+FROM        employees e, departments d
+Where       e.department_id = d.department_id
+AND         e.employee_id IN(110,130,150)
+ORDER  BY   1;
+
+
+
+
+2. 모든 사원의 사번, 이름, 부서명, 업무코드,업무제목 을 조회하시오
+--2-1 오라클 조
+
+
+SELECT  e.employee_id, e.first_name,
+        d.department_name,
+        j.job_id, j.job_title
+FROM    employees e, departments d, jobs j        
+Where   e.department_id = d.department_id(+)
+AND     e.job_id = j.job_id(+)
+AND     e.manager_id IS NOT NULL
+ORDER BY 1;
+
+
+
+ON>USING
+
+SELECT  e.employee_id, e.first_name,
+        d.department_name,
+        j.job_id, j.job_title
+FROM    employees e inner JOIN departments d      
+ON      e.department_id = d.department_id
+inner JOIN   jobs j
+on e.job_id = j.job_id
+WHERE   e.manager_id IS NOT NULL
+ORDER BY 1;
+
+
+j.job_id, j.job_title
+
+SELECT  e.employee_id, e.first_name,
+        d.department_name ,
+        job_id, j.job_title
+FROM    employees e FULL join departments d    
+using   (department_id)
+full join   jobs j
+using    (job_id)
+AND     e.manager_id IS NOT NULL
+ORDER BY 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
