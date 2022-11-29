@@ -4,7 +4,7 @@
 --2)JOIN조건은 ON 절에 명시
 --OUTER JOIN (LEFT : RIGHT : FULL): OUTER (데이터중 NULL 이있는곳의 반대)
 --사원의 사번 이름 부서코드 부서명 정보를 조회한다
-
+--dd
 
 SELECT e.employee_id first_name,e.department_id,
        d.department_name

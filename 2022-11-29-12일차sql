@@ -1,0 +1,156 @@
+--6장 서브쿼리
+--서브쿼리란 spl문장안에 있는 또다른 sql문장을 뜻한
+--1)서브쿼리는 괄호로 묶어서 사용
+--2)메인쿼리 vs서브쿼리 : ()로묶인 부분
+
+
+--6-1 단일 행 서브쿼리 : 서브쿼리 실행 결과가 하나의 결과 행을 반환하는 서브쿼리
+--6.2 다중 행 서브쿼리 :    "         여러개의 결과 행을       "
+--6.3 다중 컬럼 서브쿼리 :    "       들이상의 컬럼을      "
+--6.4 상호 연관 서브쿼리 : 메인퀴리의 컬럼이 서브쿼리의 조건으로 사용되는 서브쿼리
+--6.5 스칼라 서브쿼리 : select 절에 사용되는 서브쿼리(=컬럼)
+--6.6 인라인 뷰 서브쿼리 : from절에 사용되는 서브쿼리
+
+-- 서브쿼리는 어디든 올 수 있음, (보통where절에 작성)
+-- 서브쿼리가 없어도 작업 처리는 가능! 사용이유)처리속도가 빠름,실무에서 서브쿼리를 사용
+
+[예제6-1] 평균급여보다 더 적은 급여를 받는 사원의 사번,이름,성을 조회하시오
+
+
+--1) 메인쿼리로 작성한다면?
+--평균 급여 --6462
+select ROUND(AVG(salary)) avg_sal
+FROM   employees;
+--평균급여 보다 적게받는 사람
+select  employee_id, first_name, last_name
+FROM    employees
+WHERE   salary<=6462
+ORDER BY 1;
+
+
+
+--2) 서브쿼리를 작성한다면?
+select  employee_id, first_name, last_name
+FROM    employees
+WHERE   salary<= (select ROUND(AVG(salary)) 
+                  FROM   employees)
+ORDER BY 1;
+
+--일반쿼리로 결과를 구하고 서브쿼리로 수정 !!
+
+
+
+
+--===============================
+-- 일반쿼리로 결과를 구하고 서브쿼리로 수정!
+--================================
+
+--6-1 단일 행 서브쿼리
+-- 단일 행 연산자(=, >, >=, <, <=, <>, !=)
+--결과행이 하나이미로 그룹함수 사용하는 경우가 많다
+
+--1월급여가 가장많은 사원의 사번.이름,성 정보를 조회하시오
+
+
+select MAX(salary)
+from employees;
+
+--2월급여 최대치와 같은급여를 받은 사원 정보조회
+select  employee_id, first_name,last_name, salary
+from    employees
+where   salary =24000;
+
+
+-- 서브쿼리로(1,2을 서브쿼리로 하나로만듬)
+select  employee_id, first_name,last_name, salary
+from    employees
+where   salary = (select MAX(salary)
+          from employees)
+order by 1;
+
+--월급여가 제일 작은 사원의 사번 이름 성 정보를 조회하시오
+select min(salary)
+from employees;
+---------------
+
+select    employee_id, first_name, last_name
+from      employees
+where     salary =(select min(salary)
+        from employees);
+
+
+--사번이 108인 사원의 급여보다 더 많은 급여를 받는 사원의 사번 이름 급여를 조회하시오
+--108번사원의 급여를 조회
+select   salary
+from     employees
+where    employee_id =108;
+
+
+--급여가 12008 를 초과하는 사원의 정보를 조회
+select   employee_id, first_name, TO_CHAR(salary,'$99.999') salary
+from     employees
+where    salary > 12008;
+
+
+
+select   employee_id, first_name, TO_CHAR(salary,'$99999.99') salary
+from     employees
+where    salary > (select   salary
+         from     employees
+         where    employee_id =108);
+
+
+-- 월 급여가 가장 많은 사원의 사번 이름 성 업무제목 정부를 조회하시오
+-- 월급여 최고금액
+select max(salary)
+from  employees;
+
+-- 사번~업무제목 정부 : join연산+서브쿼리
+-- 업무제목은 job_title
+select  e.employee_id, e.last_name, e.salary,
+        j.job_title
+from    employees e, jobs j  
+where   e.job_id = j.job_id
+AND     e.salary = (select max(salary)
+         from  employees);
+
+--from employees e inner join
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
