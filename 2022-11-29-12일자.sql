@@ -784,7 +784,7 @@ FROM    employees;
 
 
 SELECT department_id, ROUND(AVG(salary)) avg_sal,
-        RANK() OVER (ORDER BY AVG(salary) DESC) avg_sal_rank
+        RANK() OVER (HIERARCHY employees ORDER BY salary DESC) avg_sal_rank
 FROM    employees
 GROUP BY department_id
 ORDER BY 3;
