@@ -476,9 +476,16 @@ TRUNCATE TABLE emp20;
 
 
 -- 9.3.2 컬럼의 변경
+-- I. 컬럼의 데이터 타입, BYTE 길이 수정
 -- ALTER TABLE 테이블명
 -- MODIFY (컬럼명1 데이터타입1, 컬럼명2 데이터타입1, ...)
 
+-- II. 컬럼의 이름만 변경
+-- ALTER TABLE 테이블명
+-- RENAME COLUMN 이전이름 TO 다음 이름;
+DESC dept;
+ALTER TABLE dept
+RENAME COLUMN department_id TO dept_id;
 -- 테이블의 행이 없거나 컬럼이 NULL 값만 포함하고 있어야 데이터 타입을 변경할 수 있다.
 -- 컬럼에 저장되어 있는 데이터의 크기 이상까지 데이터의 크기를 줄일 수 있다.
 -- └ 저장된 데이터 크기보다 더 적은 크기로 변경하려면? 오류 발생~

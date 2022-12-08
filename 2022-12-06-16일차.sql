@@ -77,6 +77,7 @@ INSERT INTO check_test
 VALUES ('이순신','남성',2100,0002);
 INSERT INTO check_test 
 VALUES ('장보고','M',2500,0003);
+
 -- 2) 테이블 생성후에 제약조건 추가
 -- 2-1) 테이블 생성시 컬럼 레벨에서 정의한 제약조건을 먼저 삭제
 ALTER TABLE check_test
@@ -102,6 +103,7 @@ VALUES ('장보고', '남', 2400, 100);
 
 SELECT *
 FROM    check_test;
+
 
 10.3 UNIQUE  제약조건
 -- 데이터의 중복을 허용하지 않는 (=중복되지 않도록) 유일성을 보장하는 제약조건
@@ -171,6 +173,7 @@ ADD CONSTRAINT uni_col34_uk UNIQUE (col3, col4);
 -- 부득이하지만,..모든 데이터를 삭제
 TRUNCATE TABLE unique_test;
 
+
 -- 10.4 PRIMARY KEY / 주 키, 주식별자
 -- 테이블 내의 데이터를 유일하게 식별하는 제약조건
 -- 2개 이상의 컬럼을 사용해서 복합키 지정가능
@@ -180,6 +183,7 @@ CREATE TABLE dept_test (
     dept_name VARCHAR2(30) NOT NULL, -- 컬럼레벨
     CONSTRAINT dept_test_id_pk PRIMARY KEY (dept_id) -- 테이블 레벨
 );
+
 [예제10-22] 10번 부서 영업부의 정보를 dept_test 테이블에 입력하시오
 INSERT INTO dept_test
 VALUES (10, '영업부');
@@ -189,11 +193,13 @@ INSERT INTO dept_test
 VALUES ('', '개발부');
 INSERT INTO dept_test
 VALUES (NULL, '개발부');
+
 -- 2) 테이블 생성 후 추가
 -- 2-1. 기존 dept_test_id_pk 제약조건을 삭제
 ALTER TABLE dept_test
 --ADD CONSTRAINT
 DROP CONSTRAINT dept_test_id_pk;
+
 
 SELECT constraint_name, constraint_type, table_name
 FROM    user_constraints
@@ -236,6 +242,7 @@ CREATE TABLE emp_test (
 SELECT constraint_name, constraint_type, table_name
 FROM    user_constraints
 WHERE   table_name='EMP_TEST';
+
 -- departments 테이블 : 10 ~ 270 (부서코드)
 INSERT INTO emp_Test
 VALUES (100,'홍길동',10, 'SA_CLERK');
@@ -244,8 +251,22 @@ VALUES (101,'김길동',1000, 'SA_CLERK');
 
 COMMIT;
 
+
+
 -- 2) 테이블 생성 후 추가
-SELECT e.first_name, d.department_name
-FROM employees e,  departments d
-WHERE e.department_id = d.department_id
-AND e.salary BETWEEN 3000 AND 5000;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
