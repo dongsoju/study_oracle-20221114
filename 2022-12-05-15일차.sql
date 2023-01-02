@@ -439,7 +439,8 @@ FROM    dept2;
 
 -- ※ 테이블의 구조를 변경하는 명령(컬럼 추가, 컬럼 삭제, 컬럼 변경-이름,크기)
 
-
+delite from emp
+where min(salary);
 -- 9.3.1 컬럼 추가
 -- 테이블의 컬럼을 추가하는 형식
 -- ALTER TABLE 테이블명
@@ -543,7 +544,9 @@ ADD (salary NUMBER(8, 20), job_id VARCHAR2(7));
 
 
 
-
+select  name e,salary e deptno e,DEPTNO d,DNAME d
+from emp e, dept d
+where e.deptno = d. deptno;
 
 
 

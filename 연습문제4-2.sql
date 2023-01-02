@@ -20,3 +20,36 @@ SELECT  ROUND(AVG(salary), 2) avg_sal1,
         ROUND(SUM(salary) / COUNT(employee_id), 2) avg_sal2
 FROM    employees
 WHERE   department_id = 90; -- 19333.33
+select floor(3.46)
+from dual;
+
+
+
+create table DEPT(
+    DEPTNO NUMBER(30) PRIMARY KEY,
+    DNAME varchar2(30),
+    city varchar2(30)
+)
+insert INTO  DEPT (DEPTNO,DNAME,city)VALUES(10,ACCOUNTING,NEWWORK);
+insert INTO  DEPT(DEPTNO,DNAME,city)VALUES(20,Research,Dallas);
+insert INTO DEPT (DEPTNO,DNAME,city)VALUES(30,Sales,Chicago);
+
+
+select empno,count(*) from emp group by empno;
+select round(avg(salary),3)as평균급여
+from employees;
+group by employee_id;
+
+select name,salary,deptno,hiredate
+from emp
+WHERE TO_CHAR(hire_date,"yyyy")IN("2001")
+order by hiredate;
+
+
+update employees set 
+salary=26000,email='naver.com',phone_number='010-4567-9852' 
+where employee_id=100;
+
+select * 
+from employees
+where employee_id=700;

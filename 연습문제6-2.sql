@@ -17,7 +17,7 @@ FROM   employees
 WHERE  department_id IN ( SELECT department_id
                           FROM  departments
                           WHERE location_id = 1700 )
-ORDER BY 1; -- 18 rows
+ORDER BY 3; -- 18 rows
 
 
 
@@ -35,6 +35,43 @@ SELECT department_id, MAX(salary)
 FROM    employees
 WHERE   department_id IS NOT NULL
 GROUP BY department_id;
+
+
+
+select floor(3.46)
+from dual;
+
+select last_name ||' '|| first_name name
+from employees
+where last_name ||first_name like '_z%'
+
+
+
+select employee_id,last_name,
+        nvl(to_char(manager_id),'없음')manager
+        from employees
+
+
+
+
+select employee_id,last_name,
+        case when manager_id<0 then '없음'
+        else to_char(manager_id)end manager
+        from employees
+
+select 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

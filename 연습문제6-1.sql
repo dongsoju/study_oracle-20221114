@@ -36,7 +36,7 @@ SELECT employee_id, first_name, hire_date
 FROM    employees
 WHERE   hire_date < ( SELECT hire_date
                       FROM    employees
-                      WHERE manager_id IS NULL )
+                      WHERE hire_date< 2010)
 ORDER BY 1;                      
 
 
@@ -47,6 +47,10 @@ FROM    employees
 --WHERE manager_id IS NULL -- 03/06/17
 ORDER BY 1;
 
-
+select  departmenname, salary,deptNo, hiredate
+from Emp   where  hiredate < ( select hiredate
+                              from  emp   
+                              where hiredate =2001)    
+order by hiredate;
 
 

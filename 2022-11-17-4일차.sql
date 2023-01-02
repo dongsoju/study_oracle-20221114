@@ -16,7 +16,7 @@ SELECT *
 FROM    employees;
 
 -- 2.2 SELECT 구문 + 조건절(=필터링) : 특정 조건에 맞는 데이터만 조회
-SELECT employee_id, first_name, department_id --SELECT 절
+SELECT  employee_id, first_name, department_id --SELECT 절
 FROM    employees               -- FROM 절
 WHERE   department_id = 100;    -- WHERE (조건)절
 
@@ -86,12 +86,12 @@ FROM v$nls_parameters;
 
 -- SQL(=Structured Query Language, 구조화된 질의 언어 <---> 패턴)
 SELECT  employee_id, first_name, salary, department_id
-FROM  employees  
+FROM    employees  
 WHERE   department_id = 30  -- 첫번째 조건
-AND salary <= 10000;        -- 두번째 조건
+AND     salary <= 10000;        -- 두번째 조건
 
 -- Q. Den 이라는 사람, 사번이 114인 사람의 정보를 추가 조회
-SELECT first_name, last_name, salary, hire_date, job_id
+SELECT  first_name, last_name, salary, hire_date, job_id
 FROM    employees
 WHERE   employee_id = 114;
 
@@ -99,7 +99,8 @@ WHERE   employee_id = 114;
 [예제2-13] 30번 부서 사원중 급여가 10000 이하면서, 2005년 이전에 입사한 사원의 정보를 조회 하시오
 -- 2005년 1월 1일 이전, 2004년 12월 31일까지
 -- 01-JAN-05 <--- 에러발생, ORA-01858,  (NLS 설정값) RR/MM/DD 임.
-SELECT  'hanul' company, employee_id, first_name ||' '||last_name fullname, salary, department_id
+SELECT  'hanul' company, employee_id, first_name ||' '||last_name 
+fullname, salary, department_id
 FROM    employees  
 WHERE   department_id = 30  -- 첫번째 조건
 AND     salary <= 10000        -- 두번째 조건
@@ -114,7 +115,8 @@ AND     hire_date <= '04/12/31'; -- 세번째 조건
 SELECT  'hanul' company, employee_id, first_name ||' '||last_name fullname, salary, department_id
 FROM    employees  
 WHERE   department_id = 30
-OR     department_id = 60;
+OR     department_id = 60
+
 
 -- 5일차 파일로 넘어갑니다.
 
